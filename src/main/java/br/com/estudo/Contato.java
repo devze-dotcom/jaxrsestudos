@@ -1,49 +1,65 @@
 package br.com.estudo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Contato {
 
+    private Integer id;
     private String nome;
+    private String sobrenome;
     private String email;
-    private String telefone;
+    private List<Telefone> telefones;
+    
+    public Contato(){}
 
-    public Contato() {
-    }
-
-    public Contato(String nome, String email, String telefone) {
+    public Contato(Integer id, String nome, String sobrenome, String email){
+        this.id = id;
         this.nome = nome;
+        this.sobrenome = sobrenome;
         this.email = email;
-        this.telefone = telefone;
+        this.telefones = new ArrayList<>();
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public Integer getId() {
+        return id;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public String getSobrenome() {
+        return sobrenome;
+    }
+
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setSobrenome(String sobrenome) {
+        this.sobrenome = sobrenome;
     }
 
-    @Override
-    public String toString() {
-        return "Nome: " + nome +
-                "\nEmail: " + email +
-                "\nTelefone: " + telefone;
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
     }
+
 
 }
