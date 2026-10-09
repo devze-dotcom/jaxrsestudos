@@ -3,6 +3,7 @@ package br.com.estudo;
 import java.util.List;
 
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -31,13 +32,23 @@ public class ContatoResource {
     }
 
     @GET 
-    @Path("nome")
+    @Path("/{nome}")
     public Response buscarPorNome(@PathParam("nome") String nome){
         List<Contato> lista = agenda.buscarContatoPorNome(nome);
         if(lista.isEmpty()){
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         return Response.ok(lista).build();
+    }
+
+    @DELETE 
+    @Path("/{id}")
+    public Response removerContato(@PathParam("id") Integer id){
+        boolean contatoRemovido = agenda.removerContato(id);
+        if(contatoRemovido){
+            return Response.ok(contatoRemovido).build();
+        }
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
 
     
